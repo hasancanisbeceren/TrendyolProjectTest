@@ -11,15 +11,14 @@ public class Senaryo extends BaseTest {
         steps.sendKeysToElementTest("input[id='login-email']", "xmyle@outlook.com"); //email inputuna değeri yaz
         steps.sendKeysToElementTest("input[id='login-password-input']", "123deneme123"); // parola inputuna değeri yaz
         steps.clickElement("#login-register > div.lr-container > div.q-layout.login > form > button");
-        steps.waitSecond(2);// giriş yap butonuna tıkla
+        steps.waitSecond(3);// giriş yap butonuna tıkla
         //steps.getTextControlTest("#account-navigation-container > div > div.account-nav-item.user-login-container > div.link.account-user > p", "Hesabım"); //giriş yapılmış mı kontrol et
         steps.sendKeysToElementTest("#auto-complete-app > div > div > input", "bilgisayar"); // arama çubuğuna "bilgisayar" yaz
         steps.clickElement("i[class='search-icon']"); //arama ikonuna bas
-        steps.clickElement("body");
-        steps.randomClick("div[class='p-card-img-wr']"); // rastgele bir ürün seç
+        //steps.clickElement("body");
+        steps.handles("div[class='p-card-img-wr']"); // rastgele bir ürün seç
         steps.waitSecond(2);// 2 saniye bekle
-        //*************************************************//Yeni açılan pencerede otomasyona devam etmiyor..!!!!!!!!
-        steps.clickElement("div[class='pr-cn-in'] div[class='add-to-bs-tx']"); //sepete ekle butonuna bas
+        //steps.clickElement("div[class='pr-cn-in'] div[class='add-to-bs-tx']"); //sepete ekle butonuna bas
         steps.clickElement("#account-navigation-container > div > div.account-nav-item.basket-preview"); //sepetim ikonuna bas
         steps.saveText("#partial-basket > div > div.pb-merchant-group > div.pb-basket-item > div.pb-basket-item-actions > div.pb-basket-item-price > span"); //ürünün fiyat bilgisini kaydet
         steps.waitSecond(2); // 2 saniye bekle

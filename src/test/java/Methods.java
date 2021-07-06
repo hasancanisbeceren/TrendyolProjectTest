@@ -1,12 +1,10 @@
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.Select;
-import java.util.Random;
-import java.util.List;
+
+import java.util.*;
 
 public class Methods extends BaseTest {
     public static String text ="";
@@ -36,6 +34,7 @@ public class Methods extends BaseTest {
         waitByMilliSeconds(500);
         element.click();
     }
+
     public void sendKeysToElement(WebElement element, String text) {
 
         scrollToElement(element);
@@ -96,6 +95,26 @@ public class Methods extends BaseTest {
         int result = r.nextInt(high - low) + low;
         System.out.println(result + ". Elemente tıklandı..");
         return result;
+    }
+    public void handles(String key){
+        List<WebElement> elements = findElements(key);
+        waitByMilliSeconds(500);
+        clickToElement(elements.get(randomInt()));
+        String parent=driver.getWindowHandle();
+        Set<String>s=driver.getWindowHandles();
+        Iterator<String> I1= s.iterator();
+        while(I1.hasNext())
+        {
+            String child_window=I1.next();
+            if(!parent.equals(child_window))
+            {
+                driver.switchTo().window(child_window);
+                System.out.println(driver.switchTo().window(child_window).getTitle());
+                driver.close();
+            }
+        }
+        driver.switchTo().window(parent);
+
     }
     public void SelectMethod(String key, String text) {
         Select element = new Select(findElement(key));

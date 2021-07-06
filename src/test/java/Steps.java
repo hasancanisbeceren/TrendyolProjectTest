@@ -1,13 +1,17 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class Steps extends Methods {
 
     public void clickElement(String key) {
         WebElement element = findElement(key);
         clickToElement(element);
+        System.out.println(" başlık  "+driver.getTitle());
+
     }
 
     public void ifElementExistClick(String key) {
@@ -17,9 +21,9 @@ public class Steps extends Methods {
             clickToElement(elements.get(0));
         }
     }
-
     public void randomClick(String key) {
         List<WebElement> elements = findElements(key);
+        waitByMilliSeconds(500);
         clickToElement(elements.get(randomInt()));
     }
 
